@@ -1,0 +1,97 @@
+:root {
+    --mainLightFontColor: #f8f7f1;
+    --mainDarkBackgroundColor: rgb(22, 22, 22);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    cursor: default;
+}
+
+html {
+    font-size: 66%;
+    color: var(--mainLightFontColor);
+}
+
+body {
+    background-color: var(--mainDarkBackgroundColor);
+}
+
+
+
+
+.mainNavbar {
+    display: flex;
+    justify-content: space-between;
+
+    height: 100px;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    color: aliceblue;
+}
+
+.mainNavbar button {
+    height: 40px;
+    padding: 10px 25px;
+
+    color: var(--mainLightFontColor);
+    background-color: transparent;
+    border: 1px solid;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    cursor: pointer;
+}
+
+.logoContainer {
+    display: flex;
+    height: 80px;
+    width: 200px;
+}
+
+.logoContainer .logo {
+    margin: 15px auto 0 auto;
+}
+
+.contactShowBtn {
+    margin: 30px 0px 0px 45px;
+}
+
+.projectsShowBtn {
+    margin: 30px 45px 0px 0px;
+}
+
+
+
+
+
+
+
+
+
+.mainImageContainer {
+  position: relative;  
+  width: calc(100% - (2 * 45px));
+  max-width: calc(1920px - (2 * 45px));
+  height: 80vh;
+  margin: 0 auto;
+  border-radius: 50px; 
+ 
+  
+  background-color: rgb(66, 66, 66);
+}
+
+.mainImageContainer h1 {
+    position: absolute;
+    width: 95%;
+    bottom: -3.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    text-transform: uppercase;
+    text-align: center;
+
+    font-size: 9.5rem;
+}
