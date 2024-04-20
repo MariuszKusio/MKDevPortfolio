@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
     <link rel="stylesheet" href="style.css">
 
 </head>
@@ -14,11 +18,14 @@
     <header>
       <nav class="mainNavbar">
         <div class="contactContainer">
-            <button class="contactShowBtn">Contact Me</button>
+            <button class="contactShowBtn">contact me</button>
+            <img src="img/contactIcons/linkedIn.svg" alt="" class="linkedinImage">
+            <img src="img/contactIcons/gitHub.svg" alt="" class="githubImage">
         </div>
 
         <div class="logoContainer">
             <img src="img/mainLogo.svg" alt="" class="logo">
+            <div class="animationSquare"></div>
         </div>
         
         <button class="projectsShowBtn">My Projects</button>
@@ -32,7 +39,34 @@
     </header>
 
 
+    <h1 class="projectsTitle">
+        /Projects
+    </h1>
+    <section class="projects">
+        <div class="progressBar">
+            
+            <div class="barTitle">Project</div>
+            <div class="bar">
+                <div class="progressCounter">1/4</div>
+            </div>
+            <div class="moveBtn leftBtn">
+                <i class="fa-solid fa-chevron-left"></i>
+            </div>
+            <div class="moveBtn rightBtn">
+                <i class="fa-solid fa-chevron-right"></i>
+            </div>
+        </div>
+       
+        <div class="projectsContainer">
+         
+
+        </div>
+    
+    </section>
 
 
+
+
+    <script src="main.js"></script>
 </body>
 </html>
