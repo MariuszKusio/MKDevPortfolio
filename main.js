@@ -13,6 +13,56 @@ const projetsTechList = ['imagelink1', 'imagelink2', 'imagelink3'];
 // Lista opisów dla danego projektu
 const projectsDescriptionList = ['opis1', 'opis2', 'opis3'];
 
+// Pobieranie przycisków lewo prawo i naszych pointów na progress barze oraz bar
+const leftBtn = document.querySelector('.leftBtn'); 
+const rightBtn = document.querySelector('.rightBtn'); 
+const steps = document.querySelectorAll('.step');
+const progressBar = document.getElementById("progress-bar");
+
+// Progress bar funkcje
+let active = 1;
+rightBtn.addEventListener('click', () => {
+  active++;
+  if (active > steps.length) {
+    active = steps.length;
+  }
+  barUpdate();
+});
+
+leftBtn.addEventListener('click', () => {
+  active--;
+  if (active < 1) {
+    active = 1;
+  }
+  barUpdate();
+});
+
+const barUpdate = () => {
+    
+    steps.forEach((step, i) => {
+        if (i < active) {
+            step.classList.add('active');
+        } else {
+            step.classList.remove('active');
+        }
+    });
+
+    progressBar.style.width = ((active - 1) / (steps.length - 1)) * 100 + '%';
+
+    if (active === 1) {
+        leftBtn.disabled = true;
+    } else if (active === steps.length) {
+        rightBtn.disabled = true;
+    } else {
+        leftBtn.disabled = false;
+        rightBtn.disabled = false;
+    }
+};
+
+
+
+
+
 // let isScrolling = false;
 // let lastScrollY = 0;
 
