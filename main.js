@@ -13,6 +13,18 @@ const projetsTechList = ['imagelink1', 'imagelink2', 'imagelink3'];
 // Lista opisów dla danego projektu
 const projectsDescriptionList = ['opis1', 'opis2', 'opis3'];
 
+const contactShowBtn = document.querySelector('.contactShowBtn');
+const contactImages = document.querySelectorAll('.contactShowBtn ~ img');
+
+// Sekcja kontaktów
+
+contactShowBtn.addEventListener('click', () => {
+  contactImages.forEach((image) => {
+    image.classList.toggle("show");
+  });
+});
+
+
 // Pobieranie przycisków lewo prawo i naszych pointów na progress barze oraz bar
 const leftBtn = document.querySelector('.leftBtn'); 
 const rightBtn = document.querySelector('.rightBtn'); 
@@ -61,67 +73,6 @@ const barUpdate = () => {
 
 
 
-
-
-// let isScrolling = false;
-// let lastScrollY = 0;
-
-
-// window.addEventListener('scroll', () => {
-
-//     let currentScrollY = window.scrollY;
-
-//     if( currentScrollY > lastScrollY) {
-//         isScrolling = true;
-//     } else {
-//         isScrolling = false;
-//     }
-
-//     lastScrollY = currentScrollY;
-// });
-
-// window.addEventListener('wheel', (e) => {
-//   if (isScrolling) {
-//     e.preventDefault();
-//     return false;
-//   }
-// }, {passive:false});
-
-// window.addEventListener('touchmove',(e) => {
-//   if (isScrolling) {
-//     e.preventDefault();
-//     return false;
-//   }
-// });
-
-// window.addEventListener('scroll', () => {
-  
-//     if (window.scrollY > 100) {
-//         headerDevTitle.style.bottom = "-3.5rem";
-//     }
-// });
-
-
-
-
-// Animacja wychodzenia napisu i wybijania się na pierwszy plan przy scrollowaniu
-// window.addEventListener('scroll', () => {
-//   let scrollValue = window.scrollY;
-//   if (scrollValue < 100) {
-//     headerStarterContainer.style.overflow = "hidden";
-//     headerDevTitle.style.bottom = "-20rem";
-//   } if (scrollValue > 100) {
-//     headerDevTitle.style.bottom = "-3.5rem";
-//   } if (scrollValue > 150) {
-//     headerDevTitle.style.bottom = "8.5rem";
-//   } if (scrollValue > 150) {
-//     headerDevTitle.style.bottom = "8.5rem";
-//   }  if (scrollValue > 250) {
-//     headerStarterContainer.style.overflow = "visible";
-//     headerDevTitle.style.bottom = "-3.5rem";
-//   } 
-// });
-
 scrollPreventContainer.addEventListener('scroll', () => {
   console.log(scrollPreventContainer.scrollTop);
   let scrollValue = scrollPreventContainer.scrollTop;
@@ -132,9 +83,9 @@ scrollPreventContainer.addEventListener('scroll', () => {
   } if (scrollValue > 100) {
     headerDevTitle.style.bottom = "-3.5rem";
   } if (scrollValue > 120) {
-    headerDevTitle.style.bottom = "8.5rem";
+    headerDevTitle.style.bottom = "20.5rem";
   } if (scrollValue > 120) {
-    headerDevTitle.style.bottom = "8.5rem";
+    headerDevTitle.style.bottom = "20.5rem";
   }  if (scrollValue > 220) {
     headerStarterContainer.style.overflow = "visible";
     headerDevTitle.style.bottom = "-3.5rem";
@@ -145,10 +96,7 @@ scrollPreventContainer.addEventListener('scroll', () => {
 
 
 
-// document.addEventListener('wheel', (e) => {
 
-//     console.log(e.deltaY);
-// });
 
 
 
