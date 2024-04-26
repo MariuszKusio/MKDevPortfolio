@@ -64,8 +64,6 @@ body {
 
 /* HEADER SECTION */
 
-
-
 .mainNavbar {
     display: flex;
     justify-content: space-between;
@@ -251,8 +249,7 @@ body {
   height: 80vh;
   margin: 0 auto;
   border-radius: 50px; 
- 
-  
+
   background-color: rgb(66, 66, 66);
   overflow: hidden;
 }
@@ -277,18 +274,17 @@ body {
     transition: .2s;
 }
 
-.scrollWindowAnimation {
+/* .scrollWindowAnimation {
  background-color: transparent;
  width: 100%;
  height: 100%;
  position: fixed;
  z-index: 300;
  overflow-y: scroll;
-}
+} */
 
 .scrollPrevent {
     background-color: transparent;
-    /* background-color: black; */
     width: 100%;
     height: 120%;
 }
@@ -296,9 +292,6 @@ body {
 .scrollWindowAnimation::-webkit-scrollbar {
     display: none;
 }
-
-
-
 
 /* Projects section */
 
@@ -317,27 +310,22 @@ body {
     max-width: 1920px;
     height: 100vh;
     margin: 0 auto;
-    /* background-color: rgb(26, 26, 26); */
 }
 
 /* Progressbar section */
 .progressBar {
     display: flex;
-    /* height: 3rem; */
     padding-top: 4rem;
     margin: 0 var(--headerMarginsValue);
     align-items: center;
 }
 
 .barTitle {
-  /* width: 5%; */
   font-size: 2rem;
   font-family: var(--articleSmallerFont);
   margin-left: var(--headerMarginsValue);
-  /* padding-left: var(--headerMarginsValue); */
   margin-right: 10px;
   line-height: 30px;
-
 }
 
 .bar {
@@ -360,14 +348,12 @@ body {
 }
 
 .moveBtn {
-    /* width: 5%; */
     width: 36px;
     height: 36px;
     border: 3px solid;
     border-radius: 50%;
     color: var(--mainLightFontColor);
     margin-left: 15px;
-    
     cursor: pointer;
     overflow: hidden;
 }
@@ -394,7 +380,6 @@ body {
 .rightBtn:hover .fa-chevron-right {
     animation: rightArrowMove 1s infinite ;
 } 
-
 
 @keyframes leftArrowMove {
     0% {
@@ -441,30 +426,28 @@ body {
 
 #progress {
     position: relative;
-    /* margin-bottom: 30px;    */
     flex-grow: 1;
   }
 
-  #progress-bar {
+#progress-bar {
     position: absolute;
-    /* background: rgba(80, 80, 80, .2); */
     background-color: var(--mainLightFontColor);
     height: 3px;
     width: 0%;
     top: 50%;
     left: 0;
     transition: .3s;
-  }
+}
 
-  #progress-num {
+#progress-num {
     margin: 0;
     padding: 0;
     list-style: none;
     display: flex;
     justify-content: space-between;
-  }
+}
 
-  #progress-num::before {
+#progress-num::before {
     content: "";
     background: rgba(80, 80, 80, .2); 
     position: absolute;
@@ -475,17 +458,15 @@ body {
     transform: translateY(-50%);
     z-index: -1;
     transition: .4s;
-  }
+}
 
-  #progress-num .step {
-    /* border: 3px solid var(--mainLightFontColor); */
+#progress-num .step {
     border: 3px solid rgba(80, 80, 80, .2);
     border-radius: 100%;
     width: 25px;
     height: 25px;
     line-height: 25px;
     text-align: center;
-    /* background-color: rgba(30, 30, 30, 1); */
     background-color: var(--mainDarkBackgroundColor);
     font-family: sans-serif;
     font-size: 14px;    
@@ -493,15 +474,13 @@ body {
     z-index: 1;
     transition: .5s;
     transition-delay: .4s;
-  }
+}
 
-  #progress-num .step.active {
-    /* background-color: rgba(60, 60, 60, 1); */
+#progress-num .step.active {
     background-color: var(--mainLightFontColor);
     border-color: var(--mainLightFontColor);
     transition: .5s;
-  }
-
+}
 
 
 .projectsContainer {
@@ -511,17 +490,18 @@ body {
   height: calc(100vh - 8rem - 7rem);
   margin: 3.5rem auto;
   border-radius: 50px; 
-  /* background-color: rgb(66, 66, 66); */
+  overflow: hidden;
 }
 
 .verticalBar {
     position: absolute;
     top: 0;
     height: 100%;
-    width: 10px;
+    width: 5px;
     z-index: 3;
     background-color: var(--mainDarkBackgroundColor);
     left: 65%;
+    transition: .4s;
 }
 
 .projectView {
@@ -529,7 +509,6 @@ body {
   height: 100%;
   border-radius: 50px; 
   overflow-y: scroll;
-
 }
 
 .projectView::-webkit-scrollbar {
@@ -541,18 +520,18 @@ body {
 }
 
 .projectDetails {
-    width: calc(35% - 10px);
+    width: calc(35% - 5px);
     height: 100%;
     position: absolute;
     right: 0;
     z-index: 4;
     background-image: url(img/projectsBlur.png);
-    /* background-color: antiquewhite; */
     background-size: 200%;
     background-position-y: -60px;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
 
+    transition: .4s;
 }
 
 .scrollWrapper {
@@ -560,6 +539,7 @@ body {
     height: 100%;
     width: 100%;
     overflow-y: scroll;
+    z-index: 50;
 }
 
 .scrollTrigger {
@@ -567,10 +547,9 @@ body {
    width: 100%;
 }
 
-
-
-
-
+.scrollWrapper::-webkit-scrollbar {
+  display: none;
+}
 
 .description {
   max-width: 1920px;
@@ -589,12 +568,10 @@ body {
 
 .firstDescription {
   padding-right: 35%;
-
 }
 
 .secondDescription {
   padding-left: 35%;
   text-align: right;
-
 }
 

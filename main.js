@@ -72,32 +72,79 @@ const barUpdate = () => {
 };
 
 
+// scrollPreventContainer.addEventListener('scroll', () => {
+//   console.log(scrollPreventContainer.scrollTop);
+//   let scrollValue = scrollPreventContainer.scrollTop;
 
-scrollPreventContainer.addEventListener('scroll', () => {
-  console.log(scrollPreventContainer.scrollTop);
-  let scrollValue = scrollPreventContainer.scrollTop;
-
-  if (scrollValue < 100) {
-    headerStarterContainer.style.overflow = "hidden";
-    headerDevTitle.style.bottom = "-20rem";
-  } if (scrollValue > 100) {
-    headerDevTitle.style.bottom = "-3.5rem";
-  } if (scrollValue > 120) {
-    headerDevTitle.style.bottom = "20.5rem";
-  } if (scrollValue > 120) {
-    headerDevTitle.style.bottom = "20.5rem";
-  }  if (scrollValue > 220) {
-    headerStarterContainer.style.overflow = "visible";
-    headerDevTitle.style.bottom = "-3.5rem";
-    scrollPreventContainer.style.display = "none";
-  } 
-});
-
-
-
-
-
-
+//   if (scrollValue < 100) {
+//     headerStarterContainer.style.overflow = "hidden";
+//     headerDevTitle.style.bottom = "-20rem";
+//   } if (scrollValue > 100) {
+//     headerDevTitle.style.bottom = "-3.5rem";
+//   } if (scrollValue > 120) {
+//     headerDevTitle.style.bottom = "20.5rem";
+//   } if (scrollValue > 120) {
+//     headerDevTitle.style.bottom = "20.5rem";
+//   }  if (scrollValue > 220) {
+//     headerStarterContainer.style.overflow = "visible";
+//     headerDevTitle.style.bottom = "-3.5rem";
+//     scrollPreventContainer.style.display = "none";
+//   } 
+// });
 
 
 // Sekcja projektów
+
+// pobieram kontener projektów, szczegółów oraz pasek pionowy
+const projectsContainer = document.querySelector('.projectsContainer');
+const projectsDetailsContainer = document.querySelector('.projectDetails');
+const projectsBar = document.querySelector('.verticalBar');
+// pobieram scroll trigger czyli diva o wysokosci 100% + szerokość kontener detailów
+const projectsScrollWrapper = document.querySelector('.scrollWrapper');
+const projectsScrollTrigger = document.querySelector('.scrollTrigger');
+
+// szerokość kontenera projektów
+let projectsContainerWidth = projectsContainer.clientWidth;
+// szerokość kontenera szczegółów
+let projectsDetailsContainerWidth = projectsDetailsContainer.clientWidth;
+
+// console.log(projectsContainerWidth);
+
+// rightBtn.addEventListener('click', () => {
+//   projectsDetailsContainer.style.right = "calc(-35% + 5px)";
+//   projectsBar.style.left = 'calc(100% + 5px)';
+//   console.log('klikam');
+// });
+
+
+// aktualizacja szerokości kontenera detailów oraz przy okazji długości scroll triggera
+
+projectsScrollTrigger.style.height = `calc(100% + ${projectsDetailsContainerWidth}px)`;
+window.addEventListener('resize', () => {
+  // aktualizacja
+  projectsContainerWidth = projectsContainer.clientWidth;
+  // aktualizacja
+  projectsDetailsContainerWidth = projectsDetailsContainer.clientWidth;
+
+  projectsScrollTrigger.style.height = `calc(100% + ${projectsDetailsContainerWidth}px)`;
+});
+
+projectsScrollWrapper.addEventListener('scroll', () => {
+  let scrollValue = projectsScrollWrapper.scrollTop;
+  let projectScrollTriggerHeight = projectsScrollTrigger.clientHeight;
+  let projectsDetailsContainerHeight = projectsDetailsContainer.clientHeight;
+
+  projectsDetailsContainer.style.right = `-${scrollValue}px`;
+  projectsBar.style.left = `calc(65% + 5px + ${scrollValue}px)`;
+
+  if (scrollValue === (projectScrollTriggerHeight - projectsDetailsContainerHeight)) {
+    projectsScrollWrapper.style.display = "none";
+   console.log('hejka');
+  }
+
+  // console.log(`${scrollValue} jest jak ${projectScrollTriggerHeight - projectsDetailsContainerHeight}`);
+ });
+
+
+
+
