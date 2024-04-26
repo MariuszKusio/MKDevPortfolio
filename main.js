@@ -142,7 +142,6 @@ projectsScrollWrapper.addEventListener('scroll', () => {
    console.log('hejka');
   }
 
-  // console.log(`${scrollValue} jest jak ${projectScrollTriggerHeight - projectsDetailsContainerHeight}`);
  });
 
 
