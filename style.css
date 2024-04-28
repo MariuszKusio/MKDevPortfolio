@@ -20,6 +20,7 @@
 html {
     font-size: 66%;
     color: var(--mainLightFontColor);
+    scroll-behavior: smooth;
 }
 
 body {
@@ -515,11 +516,14 @@ body {
     display: none;
 }
 
-.projectView img {
+
+#projectImage {
     width: 100%;
+    transition: .6s;
 }
 
 .projectDetails {
+
     width: calc(35% - 5px);
     height: 100%;
     position: absolute;
@@ -532,6 +536,101 @@ body {
     border-bottom-right-radius: 50px;
 
     transition: .4s;
+    /* opacity: 0; */
+}
+
+.showDetails {
+    position: absolute;
+    width: 5%;
+    height: 10%;
+    right: -5%;
+    top: 50%;
+    z-index: 5;
+    transform: translateY(-50%);
+    background-image: url(img/projectsBlur.png);
+    border-top-left-radius: 35px;
+    border-bottom-left-radius: 35px;
+    cursor: pointer;
+
+    transition: .4s;
+}
+
+.detailsFlexWrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    
+
+}
+
+.detailsWrapper {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 4rem;
+    align-items: center;
+    padding: 0 4rem;
+ 
+}
+
+.iconsWrapper {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.iconsWrapper img {
+    height: 50px;
+}
+
+.buttonsDetailsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.buttonsDetailsContainer button {
+    position: relative;
+    z-index: 200;
+    height: 46px;
+    padding: 10px 25px;
+    font-family: var(--articleSmallerFont);
+    font-size: 1.6rem;
+
+    color: var(--mainLightFontColor);
+    background-color: transparent;
+    border: 1px solid;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.buttonsDetailsContainer button:hover {
+    background-color: var(--mainLightFontColor);
+    border-color: var(--mainLightFontColor);
+    color: var(--mainDarkBackgroundColor);
+}
+
+.websiteDescription {
+  font-size: 2.3rem;
+  text-align: center;
+  font-family: var(--articleSmallerFont);
+}
+
+.showDetails i {
+    font-size: 3.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.showDetails.active {
+    right: 0;
 }
 
 .scrollWrapper {

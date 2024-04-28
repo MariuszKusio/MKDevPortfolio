@@ -6,12 +6,6 @@ const headerDevTitle = document.querySelector('.mainImageContainer h1');
 const scrollPrevent = document.querySelector('.scrollPrevent');
 const scrollPreventContainer = document.querySelector('.scrollWindowAnimation');
 
-// Lista ze zdjęciami projektów do naszej sekcji projektowej
-const projectsImageList = ['imagelink1', 'imagelink2', 'imagelink3'];
-// Lista wykorzystanych technologii do danego projektu
-const projetsTechList = ['imagelink1', 'imagelink2', 'imagelink3'];
-// Lista opisów dla danego projektu
-const projectsDescriptionList = ['opis1', 'opis2', 'opis3'];
 
 const contactShowBtn = document.querySelector('.contactShowBtn');
 const contactImages = document.querySelectorAll('.contactShowBtn ~ img');
@@ -39,6 +33,10 @@ rightBtn.addEventListener('click', () => {
     active = steps.length;
   }
   barUpdate();
+
+  nextProjectHandle();
+
+  // console.log(active);
 });
 
 leftBtn.addEventListener('click', () => {
@@ -47,6 +45,9 @@ leftBtn.addEventListener('click', () => {
     active = 1;
   }
   barUpdate();
+
+  prevProjectHandle();
+  // console.log(active);
 });
 
 const barUpdate = () => {
@@ -102,6 +103,8 @@ const projectsBar = document.querySelector('.verticalBar');
 // pobieram scroll trigger czyli diva o wysokosci 100% + szerokość kontener detailów
 const projectsScrollWrapper = document.querySelector('.scrollWrapper');
 const projectsScrollTrigger = document.querySelector('.scrollTrigger');
+// pobieramy diva jako przycisk do pokazania swporotem detali danego projektu
+const projectsShowDetails = document.querySelector('.showDetails');
 
 // szerokość kontenera projektów
 let projectsContainerWidth = projectsContainer.clientWidth;
@@ -134,16 +137,127 @@ projectsScrollWrapper.addEventListener('scroll', () => {
   let projectScrollTriggerHeight = projectsScrollTrigger.clientHeight;
   let projectsDetailsContainerHeight = projectsDetailsContainer.clientHeight;
 
-  projectsDetailsContainer.style.right = `-${scrollValue}px`;
-  projectsBar.style.left = `calc(65% + 5px + ${scrollValue}px)`;
+  projectsDetailsContainer.style.right = `-${scrollValue + 5}px`;
+  projectsBar.style.left = `calc(65% + 5px + 5px + ${scrollValue}px)`;
 
   if (scrollValue === (projectScrollTriggerHeight - projectsDetailsContainerHeight)) {
     projectsScrollWrapper.style.display = "none";
-   console.log('hejka');
+    projectsShowDetails.classList.add('active');
   }
+ });
 
+ projectsShowDetails.addEventListener('click', () => {
+  projectsShowDetails.classList.remove('active');
+  projectsScrollWrapper.style.display = "block";
+
+  // reset position dla kontenera szczegółów oraz dla pionowego paska
+  projectsDetailsContainer.style.right = "0";
+  projectsBar.style.left = "65%";
+  
+  // reset scrolla dla scrollWrappera projektów
+  projectsScrollWrapper.scrollTo(0,0);
+
+  projectsScrollTrigger.style.height = `calc(100% + ${projectsDetailsContainerWidth}px)`;
  });
 
 
 
 
+
+
+// Lista obiektów z danymi szczegółów projektów
+const projectDetailsList = [
+{
+  websiteImage: 'img/pagesView/m3dialnyProject.png',
+  techList: ['', '', ''],
+  projectDescription: 'Kocham pjeski',
+  websiteLink: '',
+  codeLink: '',
+},
+{
+  websiteImage: 'img/pagesView/lucanoProject.png',
+  techList: ['', '', ''],
+  projectDescription: 'Kocham kotki',
+  websiteLink: '',
+  codeLink: '',
+},
+{
+  websiteImage: 'img/pagesView/mymgymProject.png',
+  techList: ['', '', ''],
+  projectDescription: 'Kocham pipi',
+  websiteLink: '',
+  codeLink: '',
+},
+{
+  websiteImage: 'img/pagesView/tandemProject.png',
+  techList: ['', '', ''],
+  projectDescription: 'Lubie ruchać',
+  websiteLink: '',
+  codeLink: '',
+},
+];
+
+// pobieram element z opisem details
+const projectDescriptionElement = document.querySelector('.websiteDescription');
+
+// Lista ze zdjęciami projektów do naszej sekcji projektowej
+const projectsImageList = ['img/pagesView/m3dialnyProject.png', 'img/pagesView/lucanoProject.png', 'img/pagesView/mymgymProject.png', 'img/pagesView/tandemProject.png'];
+// Lista wykorzystanych technologii do danego projektu - tu musimy zrobić obiekty dla poszczególnych detailów projektu
+const projetsTechList = ['imagelink1', 'imagelink2', 'imagelink3', ''];
+// Lista opisów dla danego projektu
+const projectsDescriptionList = ['opis1', 'opis2', 'opis3', ''];
+// Lista linków do przycisków
+const websitesLinkList = ['','',''];
+const buttonsLinkList = ['','',''];
+// pobieram tag img html. który przechowuje adresy grafik stron
+const projectImage = document.getElementById('projectImage');
+
+// Zmiana projektów
+
+let slideCounter = 1;
+const nextProjectHandle = () => {
+
+  if (slideCounter == steps.length){
+    projectImage.style.marginLeft = "0";
+  } else {
+   projectImage.style.marginLeft = "100%";
+   slideCounter++;
+  }
+
+   setTimeout(() => {
+    // zmiana obrazka na link z obiektu po indexie oraz zmiana stylu, który przesuwa nasz obrazek
+    projectImage.src = projectDetailsList[active - 1].websiteImage;
+    projectImage.style.marginLeft = "0";
+    // zmiana opisu projektu
+    projectDescriptionElement.innerHTML = projectDetailsList[active -1].projectDescription;
+
+
+    // Zrób dodawanie listy technologii na podstawie foreacha, który przeleci każdy item z listy w obiekcie projectDetailsLIst.techList
+    // wrzucając linki do ikonek technologii do tworzących w foreachu tagów img w ilości długości listy
+
+
+    // wyjeżdżanie i wjeżdżanie sekcji detali projektu
+    
+   }, 600);
+
+};
+
+const prevProjectHandle = () => {
+
+  projectImage.style.marginLeft = "-100%";
+
+  if (slideCounter == 1){
+    projectImage.style.marginLeft = "0";
+  } else {
+   projectImage.style.marginLeft = "-100%";
+   slideCounter--;
+  }
+
+  setTimeout(() => {
+    projectImage.src = projectDetailsList[active - 1].websiteImage;
+    projectImage.style.marginLeft = "0";
+
+    projectDescriptionElement.innerHTML = projectDetailsList[active -1].projectDescription;
+   }, 600);
+
+};
