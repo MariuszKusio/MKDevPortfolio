@@ -5,8 +5,6 @@ const headerDevTitle = document.querySelector('.mainImageContainer h1');
 // Pobieramy scrollPrevent 
 const scrollPrevent = document.querySelector('.scrollPrevent');
 const scrollPreventContainer = document.querySelector('.scrollWindowAnimation');
-
-
 const contactShowBtn = document.querySelector('.contactShowBtn');
 const contactImages = document.querySelectorAll('.contactShowBtn ~ img');
 
@@ -143,7 +141,7 @@ projectsScrollWrapper.addEventListener('scroll', () => {
   if (scrollValue === (projectScrollTriggerHeight - projectsDetailsContainerHeight)) {
     projectsScrollWrapper.style.display = "none";
     projectsShowDetails.classList.add('active');
-  }
+  } 
  });
 
  projectsShowDetails.addEventListener('click', () => {
@@ -169,29 +167,29 @@ projectsScrollWrapper.addEventListener('scroll', () => {
 const projectDetailsList = [
 {
   websiteImage: 'img/pagesView/m3dialnyProject.png',
-  techList: ['', '', ''],
-  projectDescription: 'Kocham pjeski',
+  techList: ['img/skillSetIcons/html.svg', 'img/skillSetIcons/css.svg', 'img/skillSetIcons/javaScript.svg'],
+  projectDescription: 'Strona stworzona na zlecenie concent creatora "m3dialnego". Została napisana głównie z wykorzystaniem html, css oraz JavaScript. Założeniem tej strony było zaprezentowanie możliwości wizualnych w tworzeniu materiałów reklamowych przez klienta. Zależało nam na stworzeniu przejrzystej galerii dla odwiedzających stronę.',
   websiteLink: '',
   codeLink: '',
 },
 {
   websiteImage: 'img/pagesView/lucanoProject.png',
-  techList: ['', '', ''],
-  projectDescription: 'Kocham kotki',
+  techList: ['img/skillSetIcons/html.svg', 'img/skillSetIcons/css.svg', 'img/skillSetIcons/javaScript.svg'],
+  projectDescription: 'Witryna stworzona dla usługodawcy w branży rozrywkowej. Strona zawiera przejrzyste grafiki, dobrane animacje, oraz galerię z możliwością filtrowania przeglądanych treści. Znajduje się na niej również formularz kontaktowy z zabezpieczeniem przed szybkim wysyłaniem wiadomości oraz walidacją wprowadzanych danych.',
   websiteLink: '',
   codeLink: '',
 },
 {
   websiteImage: 'img/pagesView/mymgymProject.png',
-  techList: ['', '', ''],
-  projectDescription: 'Kocham pipi',
+  techList: ['img/skillSetIcons/html.svg', 'img/skillSetIcons/css.svg', 'img/skillSetIcons/javaScript.svg'],
+  projectDescription: 'Strona testowa stworzona dla fikcyjnej siłowni. Posiada wiele zakładek z racji na mnogość treści. ',
   websiteLink: '',
   codeLink: '',
 },
 {
   websiteImage: 'img/pagesView/tandemProject.png',
-  techList: ['', '', ''],
-  projectDescription: 'Lubie ruchać',
+  techList: ['img/skillSetIcons/html.svg', 'img/skillSetIcons/css.svg'],
+  projectDescription: 'Strona testowa stworzona dla fikcyjnego salonu barberskiego. Posiada odnośniki do stron zewnętrznych umożliwiających umówienie wizyty. Założeniem tej strony było wykorzystanie tylko i wyłącznie HTML oraz CSS. Kilka linijek JavaScriptu zostało zaimplementowanych w celu usprawnienia przycisków.',
   websiteLink: '',
   codeLink: '',
 },
@@ -211,18 +209,34 @@ const websitesLinkList = ['','',''];
 const buttonsLinkList = ['','',''];
 // pobieram tag img html. który przechowuje adresy grafik stron
 const projectImage = document.getElementById('projectImage');
+// pobieramy wrapper dla naszych technologicznych ikon
+const techIconWrapper = document.querySelector('.iconsWrapper');
+
 
 // Zmiana projektów
 
 let slideCounter = 1;
 const nextProjectHandle = () => {
+  projectsShowDetails.classList.remove('active');
 
   if (slideCounter == steps.length){
     projectImage.style.marginLeft = "0";
   } else {
+    // chowanie się slajdu projektu jeżeli warunek pozwala
    projectImage.style.marginLeft = "100%";
+    // chowanie się detali projektu jeżeli warunek pozwala
+   projectsDetailsContainer.style.right = "-35%";
+   projectsBar.style.left = "calc(100% + 5px)";
+
    slideCounter++;
   }
+
+  //dajemy .5s opóźnienia dla animacji kropki
+  steps.forEach((step) => {
+    step.style.transitionDelay = '.2s';
+    }
+  )
+
 
    setTimeout(() => {
     // zmiana obrazka na link z obiektu po indexie oraz zmiana stylu, który przesuwa nasz obrazek
@@ -235,14 +249,22 @@ const nextProjectHandle = () => {
     // Zrób dodawanie listy technologii na podstawie foreacha, który przeleci każdy item z listy w obiekcie projectDetailsLIst.techList
     // wrzucając linki do ikonek technologii do tworzących w foreachu tagów img w ilości długości listy
 
+   clearTechIconList();
+   addTechIconList();
+
 
     // wyjeżdżanie i wjeżdżanie sekcji detali projektu
+    projectsDetailsContainer.style.right = "0";
+    projectsBar.style.left = "65%";
     
+
    }, 600);
 
 };
 
 const prevProjectHandle = () => {
+  // Schowanie showDetails elementu jeżeli ma on klasę 'active'
+  projectsShowDetails.classList.remove('active');
 
   projectImage.style.marginLeft = "-100%";
 
@@ -250,14 +272,58 @@ const prevProjectHandle = () => {
     projectImage.style.marginLeft = "0";
   } else {
    projectImage.style.marginLeft = "-100%";
+
+   projectsDetailsContainer.style.right = "-35%";
+   projectsBar.style.left = "calc(100% + 5px)";
+
    slideCounter--;
   }
+  // dajemy zerowe opóźnienie dla animacji kropki
+  steps.forEach((step) => {
+    step.style.transitionDelay = '.0s';
+    }
+  )
 
   setTimeout(() => {
     projectImage.src = projectDetailsList[active - 1].websiteImage;
     projectImage.style.marginLeft = "0";
 
     projectDescriptionElement.innerHTML = projectDetailsList[active -1].projectDescription;
+
+
+    clearTechIconList();
+    addTechIconList();
+
+    // wyjeżdżanie i wjeżdżanie sekcji detali projektu
+    projectsDetailsContainer.style.right = "0";
+    projectsBar.style.left = "65%";
+    
    }, 600);
 
 };
+
+const clearTechIconList = () => {
+   // pobieramy wszystkie img z icon wrappera
+   const techIconList = document.querySelectorAll('.iconsWrapper img');
+   // iterujemy po pobranej liście ikon i usuwamy wszystkie przed dodaniem
+   techIconList.forEach((icon) => {
+     icon.remove();
+   });
+  
+};
+
+const addTechIconList = () => {
+    // Dodawanie aktualnej listy ikon na podstawie informacji w naszym obiekcie projektowym
+    projectDetailsList[active - 1].techList.forEach((tech, i = 0) => {
+      // stworzenie elementu img do wyświetlania elementów tech oraz nadanie mu klasy do indentyfikacji
+      const techImgElement = document.createElement('img');
+      techImgElement.classList.add(`techElement${i}`);
+      // dodanie stworzonego elementu do DOM w miejsce które nas interesuje 
+      techIconWrapper.appendChild(techImgElement);
+      // dodanie do src linku do obrazka technologii, który chcemy dodać z listy wskazanego obiektu
+      const setSrcElement = document.querySelector(`.techElement${i}`);
+      setSrcElement.src = tech;
+    });
+};
+
+
