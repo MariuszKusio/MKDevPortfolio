@@ -1,3 +1,26 @@
+// Nawigacja po kliknięciu na przycisk do sekcji projektów
+const projectsNavButton = document.querySelector('.projectsShowBtn');
+
+function scrollToSection(sectionClass) {
+  const section = document.querySelector(sectionClass);
+  if (section) {
+      section.scrollIntoView({ behavior:'smooth' })
+  }
+}
+
+projectsNavButton.addEventListener('click', () => { scrollToSection('.projects') }) 
+
+// Przekierowanie po klilnięciu przycisków do odpiednich linków
+
+document.querySelector('.linkedinImage').addEventListener('click', () => {
+  window.location.href = 'https://www.linkedin.com/in/mariusz-kusio-168803228/';
+});
+
+document.querySelector('.githubImage').addEventListener('click', () => {
+  window.location.href = 'https://github.com/MariuszKusio';
+});
+
+
 // Pobieramy kontener dla zdjecia i napisu głównego na starcie żeby zmienić jego overflow przy animacji napisu
 const headerStarterContainer = document.querySelector('.mainImageContainer');
 // Pobieramy napis z tego konteneru wyżej
@@ -104,6 +127,8 @@ const projectsScrollTrigger = document.querySelector('.scrollTrigger');
 // pobieramy diva jako przycisk do pokazania swporotem detali danego projektu
 const projectsShowDetails = document.querySelector('.showDetails');
 
+const scrollIndicator = document.querySelector('.scrollIndicator');
+
 // szerokość kontenera projektów
 let projectsContainerWidth = projectsContainer.clientWidth;
 // szerokość kontenera szczegółów
@@ -130,13 +155,25 @@ window.addEventListener('resize', () => {
   projectsScrollTrigger.style.height = `calc(100% + ${projectsDetailsContainerWidth}px)`;
 });
 
-projectsScrollWrapper.addEventListener('scroll', () => {
+let scrollCounter = 0;
+projectsScrollWrapper.addEventListener('scroll', (e) => {
   let scrollValue = projectsScrollWrapper.scrollTop;
   let projectScrollTriggerHeight = projectsScrollTrigger.clientHeight;
   let projectsDetailsContainerHeight = projectsDetailsContainer.clientHeight;
+  
+  // zniknięcie zachęcacza scrollowania po wykonanym scrollu 
+ if(e && scrollCounter < 10) {
+  scrollCounter++;
+  // if(scrollCounter > )
+  if(scrollCounter > 9) {
+    scrollIndicator.classList.add('hide');
+  }
+ }
+//  console.log(scrollCounter)
 
   projectsDetailsContainer.style.right = `-${scrollValue + 5}px`;
   projectsBar.style.left = `calc(65% + 5px + 5px + ${scrollValue}px)`;
+
 
   if (scrollValue === (projectScrollTriggerHeight - projectsDetailsContainerHeight)) {
     projectsScrollWrapper.style.display = "none";
@@ -211,13 +248,18 @@ const buttonsLinkList = ['','',''];
 const projectImage = document.getElementById('projectImage');
 // pobieramy wrapper dla naszych technologicznych ikon
 const techIconWrapper = document.querySelector('.iconsWrapper');
-
+// pobieramy scroll kontener dla obrazka projektów
+const scrollImageProjectContainer = document.querySelector('.projectView');
 
 // Zmiana projektów
 
 let slideCounter = 1;
 const nextProjectHandle = () => {
+  // projectsScrollWrapper.style.display = "block";
+  // projectsScrollWrapper.scrollTo(0,0);
+
   projectsShowDetails.classList.remove('active');
+  
 
   if (slideCounter == steps.length){
     projectImage.style.marginLeft = "0";
@@ -245,13 +287,13 @@ const nextProjectHandle = () => {
     // zmiana opisu projektu
     projectDescriptionElement.innerHTML = projectDetailsList[active -1].projectDescription;
 
-
-    // Zrób dodawanie listy technologii na podstawie foreacha, który przeleci każdy item z listy w obiekcie projectDetailsLIst.techList
-    // wrzucając linki do ikonek technologii do tworzących w foreachu tagów img w ilości długości listy
+    projectsScrollWrapper.style.display = "block";
+    projectsScrollWrapper.scrollTo(0,0);
 
    clearTechIconList();
    addTechIconList();
-
+   // reset pozycji scroll kontenera
+   //  scrollImageProjectContainer.scrollTo(0,0);
 
     // wyjeżdżanie i wjeżdżanie sekcji detali projektu
     projectsDetailsContainer.style.right = "0";
@@ -263,8 +305,10 @@ const nextProjectHandle = () => {
 };
 
 const prevProjectHandle = () => {
+  
   // Schowanie showDetails elementu jeżeli ma on klasę 'active'
   projectsShowDetails.classList.remove('active');
+ 
 
   projectImage.style.marginLeft = "-100%";
 
@@ -290,9 +334,16 @@ const prevProjectHandle = () => {
 
     projectDescriptionElement.innerHTML = projectDetailsList[active -1].projectDescription;
 
+    // Dodanie wyświetlania scroll wrapperowi szczegółów dla wypadków kiedy projekt został przewinięty ze schowanymi sczegółami
+    // Oraz zresetowanie wrappera do początkowej pozycji
+    projectsScrollWrapper.style.display = "block";
+    projectsScrollWrapper.scrollTo(0,0);
+
 
     clearTechIconList();
     addTechIconList();
+    // reset pozycji scroll kontenera
+    // scrollImageProjectContainer.scrollTo(0,0);
 
     // wyjeżdżanie i wjeżdżanie sekcji detali projektu
     projectsDetailsContainer.style.right = "0";
@@ -325,5 +376,19 @@ const addTechIconList = () => {
       setSrcElement.src = tech;
     });
 };
+
+// smooth scrolling dla projektów
+const options = {
+ 'damping': 0.04,
+ 'alwaysShowTracks': false,
+ // swtwórz tutaj zmienną, któa przyjmie true po przestaniu scrollowania chwilę po skończonym scrollowaniu okna projektu
+ // tak żeby od razu nie scrollowało się do góry tylko po chwili była taka możliwość
+ 'continuousScrolling': false,
+
+};
+
+Scrollbar.init(document.querySelector('.projectView'), options);
+
+// Napraw scrollowanie w prawo szczegółów projektu po ich przełęczaniu ponieważ to nie działa.
 
 

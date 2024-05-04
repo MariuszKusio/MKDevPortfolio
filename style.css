@@ -508,6 +508,7 @@ body {
   height: 100%;
   border-radius: 50px; 
   overflow-y: scroll;
+
 }
 
 .projectView::-webkit-scrollbar {
@@ -588,8 +589,8 @@ body {
 }
 
 .buttonsDetailsContainer button {
-    /* position: relative;
-    z-index: 200; */
+    position: relative;
+    z-index: 200;
     height: 46px;
     padding: 10px 25px;
     font-family: var(--articleSmallerFont);
@@ -648,11 +649,55 @@ body {
 .scrollTrigger {
    height: calc(100%);
    width: 100%;
+   pointer-events: none;
 }
 
 .scrollWrapper::-webkit-scrollbar {
   display: none;
 }
+
+.scrollIndicator {
+  position: relative;
+  top: 35%;
+  left: -50%;
+  transform: translate(50%);
+  width: 36px;
+  height: 66px;
+  border: solid 3px white;
+  border-radius: 28px;
+  transition: .3s;
+}
+
+.scrollIndicator.hide{
+  /* display: none; */
+  opacity: 0;
+}
+
+.scrollIndicator::before {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: white;
+    left: 50%;
+    bottom: 60%;
+    transform: translateX(-50%);
+    animation: scrollIndicatorMove 2.2s infinite ease-in-out;
+}
+
+@keyframes scrollIndicatorMove {
+    0% {
+      bottom: 60%;
+      opacity: 0;
+    }
+
+    100% {
+       bottom: 10%;
+       opacity: 1;
+    }
+}
+
 
 .description {
   max-width: 1920px;
@@ -662,11 +707,12 @@ body {
 }
 
 .description  article {
+    width: 50%;
     font-size: 3rem;
     font-family: var(--articleSmallerFont);
     font-weight: 300;
 
-    margin: 15rem 10rem;
+    margin: 15rem var(--headerMarginsValue);
 }
 
 .firstDescription {
@@ -674,7 +720,50 @@ body {
 }
 
 .secondDescription {
-  padding-left: 35%;
+  padding-left: calc(50% - 2 * (var(--headerMarginsValue)));
   text-align: right;
 }
+
+
+.descriptionFlexContainer {
+    display: flex;
+    margin: 15rem var(--headerMarginsValue);
+}
+
+.descriptionPhotoContainer {
+  width: 100%;
+  height: 1000px;
+  /* background-color: aliceblue; */
+}
+
+.descriptionPhotoContainer img {
+   display: block;
+   height: 100%;
+   margin: 0 auto;
+}  
+
+.descriptionSkillsContainer {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    height: 500px;
+    /* background-color: rebeccapurple; */
+}
+
+.skillContainer {
+    
+    width: 100px;
+    height: 100px;
+    border: 2.5px solid white;
+    border-radius: 15px;
+}
+
+.skillContainer img {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    /* border-radius: 50px; */
+}
+
 
