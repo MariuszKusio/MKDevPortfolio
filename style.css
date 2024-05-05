@@ -699,6 +699,10 @@ body {
 }
 
 
+
+
+
+
 .description {
   max-width: 1920px;
   margin: 0 auto;
@@ -706,21 +710,26 @@ body {
   flex-direction: column;
 }
 
+.descriptionWrapper {
+   margin: 0 var(--headerMarginsValue);
+}
+
 .description  article {
-    width: 50%;
-    font-size: 3rem;
+    width: 65%;
+    font-size: 8rem;
     font-family: var(--articleSmallerFont);
     font-weight: 300;
 
-    margin: 15rem var(--headerMarginsValue);
+    /* margin: 15rem var(--headerMarginsValue); */
 }
 
 .firstDescription {
-  padding-right: 35%;
+  
 }
 
 .secondDescription {
-  padding-left: calc(50% - 2 * (var(--headerMarginsValue)));
+    padding-left: calc(35% - (var(--headerMarginsValue)));
+  /* padding-left: calc(50% - 2 * (var(--headerMarginsValue))); */
   text-align: right;
 }
 
@@ -767,3 +776,20 @@ body {
 }
 
 
+.heroWrapper {
+    padding: 6.4rem;
+}
+
+
+.heroParagraphText,
+.heroParagraphText span {
+   font-size: 8rem;
+   line-height: 1.2;
+}
+
+.heroParagraphText::before {
+  content: 'About';
+  border-bottom: 3px solid white;
+  font-size: 3rem;
+  display: block;
+}
