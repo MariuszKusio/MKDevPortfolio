@@ -721,7 +721,7 @@ body {
 }
 
 .description  article {
-    width: 65%;
+    width: 75%;
     font-size: 8rem;
     font-family: var(--articleSmallerFont);
     font-weight: 300;
@@ -734,7 +734,7 @@ body {
 }
 
 .secondDescription {
-    padding-left: calc(35% - (var(--headerMarginsValue)));
+    padding-left: calc(25% - (var(--headerMarginsValue)));
   /* padding-left: calc(50% - 2 * (var(--headerMarginsValue))); */
   text-align: right;
 }
@@ -757,20 +757,67 @@ body {
    margin: 0 auto;
 }  
 
+
 .descriptionSkillsContainer {
-    display: flex;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 2rem;
+    grid-row-gap: 1rem;
+    /* gap: 10px; */
     width: 100%;
     height: 500px;
     /* background-color: rebeccapurple; */
+    
+    /* justify-content: center; */
+    /* align-content: center; */
+    align-self: center;
+}
+
+.skill-grid-1 {
+  grid-area: 1/2/2/3;
+}
+.skill-grid-2 {
+    grid-area: 2/2/3/3;
+    transform: rotate(45deg);
+}
+.skill-grid-3 {
+    grid-area: 2/3/3/4;
+    transform: rotate(45deg);
+}
+.skill-grid-4 {
+    grid-area: 3/1/4/2;
+    transform: rotate(45deg);
+}
+.skill-grid-5 {
+    grid-area: 3/2/4/3;
+}
+.skill-grid-6 {
+    grid-area: 3/3/4/4;
+}
+.skill-grid-7 {
+    grid-area: 4/1/5/2;
+}
+.skill-grid-8 {
+    grid-area: 4/2/5/3;
+}
+.skill-grid-9 {
+    grid-area: 4/3/5/4;
 }
 
 .skillContainer {
-    
+    /* position: relative; */
+    /* left: 50%; */
+    /* transform: translateX(-50%); */
+    /* transform: rotate(45deg); */
     width: 100px;
     height: 100px;
+    margin: 0 auto;
     border: 2.5px solid white;
     border-radius: 15px;
+
+    align-items: center;
+    justify-items: center;
 }
 
 .skillContainer img {
@@ -781,16 +828,27 @@ body {
     /* border-radius: 50px; */
 }
 
+.skillsTitle {
+    display: block;
+    font-size: 3rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: var(--titleLargeFont);
+}
+
 
 .heroWrapper {
     padding: 6.4rem;
 }
 
 
-.heroParagraphText,
-.heroParagraphText span {
+.heroParagraphText {
    font-size: 8rem;
    line-height: 1.2;
+}
+
+.heroParagraphText span {
+    opacity: .1;
 }
 
 .heroParagraphText::before {
@@ -799,3 +857,5 @@ body {
   font-size: 3rem;
   display: block;
 }
+
+
