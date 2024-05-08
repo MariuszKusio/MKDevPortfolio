@@ -395,23 +395,33 @@ Scrollbar.init(document.querySelector('.projectView'), options);
 // Text reveal
 
 // pobierz dwa descriptiony poprzez querySelectorAll i wykorzystaj foreach to nadania im spanów
-let descriptionParagraph = document.querySelector('.heroParagraphText');
+let descriptionParagraph = document.querySelectorAll('.paragraphText');
 let spans = [];
 
-const spanTextWrapper = () => {
-   let htmlString = '';
-   let pArray = descriptionParagraph.textContent.split('');
-
-   for(let i=0; i < pArray.length; i++) {
+descriptionParagraph.forEach(paragraph => {
+  let htmlString = '';
+  let pArray = paragraph.textContent.split('');
+   
+  for(let i=0; i < pArray.length; i++) {
     htmlString += `<span>${pArray[i]}</span>`;
-
-    // descriptionParagraph.innerHTML = htmlString;
    }
     
-   descriptionParagraph.innerHTML = htmlString;
-   console.log(pArray);
-};
-window.addEventListener('DOMContentLoaded', spanTextWrapper());
+  paragraph.innerHTML = htmlString;
+
+});
+
+// const spanTextWrapper = () => {
+//    let htmlString = '';
+//    let pArray = descriptionParagraph.textContent.split('');
+
+//    for(let i=0; i < pArray.length; i++) {
+//     htmlString += `<span>${pArray[i]}</span>`;
+//    }
+    
+//    descriptionParagraph.innerHTML = htmlString;
+//    console.log(pArray);
+// };
+// window.addEventListener('DOMContentLoaded', spanTextWrapper());
 
 
 spans = [...document.querySelectorAll('span')];

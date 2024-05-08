@@ -25,7 +25,6 @@ html {
 
 body {
     background-color: var(--mainDarkBackgroundColor);
-    /* overflow: hidden; */
 }
 
 /* BACKGROUND */
@@ -82,17 +81,17 @@ body {
     padding: 10px 25px;
     font-family: var(--articleSmallerFont);
     font-size: 1.6rem;
-
     color: var(--mainLightFontColor);
     background-color: transparent;
     border: 1px solid;
     border-radius: 50px;
+    /* border-radius: 20px; */
     text-transform: uppercase;
     letter-spacing: .5px;
     cursor: pointer;
-
     overflow: hidden;
     transition: .3s;
+    /* background-color: #FDFCF8; */
 }
 
 /* Buttons Animation */
@@ -104,10 +103,8 @@ body {
     height: 50%;
     background: url(img/wave.svg);
     background-size: 200% 100%;
-
     top: 65%;
     left: 0;
-
     animation: waveMove 2s linear infinite;
     transition: .3s;
 }
@@ -297,13 +294,17 @@ body {
 /* Projects section */
 
 .projectsTitle {
-    height: 200px;
+    display: block;
+    font-family: var(--titleLargeFont);
+    font-weight: 400;
+    border-bottom: 3px solid white;
+    width: 65%;
     max-width: 1920px;
-    line-height: 200px;
-    margin: 2rem auto 2rem auto;
-    padding-left: var(--headerMarginsValue);
-    font-size: 4rem;
-    text-transform: uppercase;
+    padding-bottom: 1rem;
+    margin: 15rem auto 2rem auto;
+    margin-left: var(--headerMarginsValue);
+    font-size: 3rem;
+    
 }
 
 .projects {
@@ -677,30 +678,39 @@ body {
     content: '';
     position: absolute;
     width: 3px;
-    height: 8px;
+    height: 9px;
     border-radius: 2px;
     background-color: white;
     left: 50%;
     top: 20%;
     transform: translateX(-50%);
+    /* animation: scrollIndicatorMove 2s infinite; */
+}
+
+.scrollIndicator::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 8px;
+    border-radius: 2px;
+    background-color: white;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, 85%);
     animation: scrollIndicatorMove 2s infinite;
 }
 
 @keyframes scrollIndicatorMove {
     0% {
-      /* bottom: 60%; */
-      /* opacity: 0; */
-      height: 8px;
+      transform: translate(-50%, 0%);
     }
 
     50% {
-        height: 12px; 
+        transform: translate(-50%, 85%);
     }
 
     100% {
-       /* bottom: 10%; */
-       /* opacity: 1; */
-       height: 8px;
+       transform: translate(-50%, 0%);
     }
 }
 
@@ -813,7 +823,7 @@ body {
     width: 100px;
     height: 100px;
     margin: 0 auto;
-    border: 2.5px solid white;
+    /* border: 2.5px solid white; */
     border-radius: 15px;
 
     align-items: center;
@@ -837,23 +847,25 @@ body {
 }
 
 
-.heroWrapper {
+.paragraphWrapper {
     padding: 6.4rem;
 }
 
 
-.heroParagraphText {
+.paragraphText {
    font-size: 8rem;
    line-height: 1.2;
 }
 
-.heroParagraphText span {
+.paragraphText span {
     opacity: .1;
 }
 
-.heroParagraphText::before {
+.firstDescription .paragraphText::before {
   content: 'About';
   border-bottom: 3px solid white;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
   font-size: 3rem;
   display: block;
 }
