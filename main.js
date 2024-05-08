@@ -40,6 +40,29 @@ contactShowBtn.addEventListener('click', () => {
 });
 
 
+// Sekcja headera
+
+//Pobieramy nasz napis i chowamy go 
+
+// const headerMainText = document.querySelector('.headerMainText');
+
+// headerMainText.style.bottom = `-${headerMainText.clientHeight}px`;
+
+// window.addEventListener('resize', () => {
+//   if ((headerMainText.style.bottom / 3) > 0 )
+//   headerMainText.style.bottom = `-${headerMainText.clientHeight}px`;
+//   console.log(headerMainText.clientHeight);
+// });
+
+// console.log(headerMainText.style.bottom);
+
+
+
+
+
+
+
+
 // Pobieranie przycisków lewo prawo i naszych pointów na progress barze oraz bar
 const leftBtn = document.querySelector('.leftBtn'); 
 const rightBtn = document.querySelector('.rightBtn'); 

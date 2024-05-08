@@ -83,7 +83,7 @@ body {
     font-size: 1.6rem;
     color: var(--mainLightFontColor);
     background-color: transparent;
-    border: 1px solid;
+    border: 0px solid;
     border-radius: 50px;
     /* border-radius: 20px; */
     text-transform: uppercase;
@@ -133,7 +133,7 @@ body {
 
 .mainNavbar button:hover {
     color: var(--mainDarkBackgroundColor);
-    border-color: #FDFCF8;
+    /* border-color: #FDFCF8; */
 }
 
 @keyframes waveMove {
@@ -256,13 +256,14 @@ body {
     overflow: none;
 }
 
-.mainImageContainer h1 {
+.headerMainText {
     position: absolute;
     width: 95%;
     /* bottom: -3.5rem; */
-    bottom: -30rem;
+    bottom: 0rem;
     left: 50%;
-    transform: translateX(-50%);
+    z-index: 0;
+    transform: translate(-50%, 20%);
 
     text-transform: uppercase;
     text-align: center;
@@ -270,6 +271,26 @@ body {
     font-family: var(--titleLargeFontSerif);
     font-size: 9.5rem;
     transition: .2s;
+
+    animation: mainTextAnimation 3s linear;
+}
+
+@keyframes mainTextAnimation {
+ 0% {
+    transform: translate(-50%, 100%);
+ }
+
+ 50% {
+    transform: translate(-50%, 6%);
+ }
+ 58% {
+    transform: translate(-50%, 0%);
+    overflow: none;
+ }
+
+ 100% {
+    transform: translate(-50%, 20%);
+ }
 }
 
 /* .scrollWindowAnimation {
@@ -292,6 +313,11 @@ body {
 }
 
 /* Projects section */
+
+.projectsTitleWrapper {
+  max-width: 1920px;
+  margin: 0 auto;
+}
 
 .projectsTitle {
     display: block;
@@ -678,29 +704,44 @@ body {
     content: '';
     position: absolute;
     width: 3px;
-    height: 9px;
+    height: 7px;
     border-radius: 2px;
     background-color: white;
+    /* background-color: red; */
     left: 50%;
     top: 20%;
-    transform: translateX(-50%);
-    /* animation: scrollIndicatorMove 2s infinite; */
+    transform: translate(-50%, 0%);
+    animation: scrollIndicatorMove 2s infinite;
 }
 
 .scrollIndicator::after {
     content: '';
     position: absolute;
     width: 3px;
-    height: 8px;
+    height: 9px;
     border-radius: 2px;
     background-color: white;
     left: 50%;
     top: 20%;
     transform: translate(-50%, 85%);
-    animation: scrollIndicatorMove 2s infinite;
+    animation: scrollIndicatorMove2 2s infinite;
 }
 
 @keyframes scrollIndicatorMove {
+    0% {
+        transform: translate(-50%, 0%);
+      }
+  
+      70% {
+          transform: translate(-50%, 60%);
+      }
+  
+      100% {
+         transform: translate(-50%, 0%);
+      }
+}
+
+@keyframes scrollIndicatorMove2 {
     0% {
       transform: translate(-50%, 0%);
     }
@@ -713,6 +754,8 @@ body {
        transform: translate(-50%, 0%);
     }
 }
+
+
 
 
 
