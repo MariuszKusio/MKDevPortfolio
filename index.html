@@ -12,17 +12,38 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
+
+      <!-- Sharing -->
+      <meta
+      name="og:description"
+      content="Tworzę strony z pasji."
+    />
+    <meta
+      property="og:title"
+      content="Mariusz Kusio - Frontedn Developer"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="img/websitePreview.svg" />
+    <meta name="author" content="MKDev" />
+
+
+    <link rel="shortcut icon" type="x-icon" href="img/websiteIcon.svg" />
+
+    <title>MKDev - Mariusz Kusio</title>
+
     <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
-   
+
     <div class="bg"></div>
      
     <header>
       <nav class="mainNavbar">
+        
         <div class="contactContainer">
-            <button class="contactShowBtn">contact me
+            <button class="contactShowBtn">
+                  contact me
                 <div class="wave"></div>
                 <div class="secondWave"></div>
             </button>
@@ -34,16 +55,28 @@
             <img src="img/mainLogo.svg" alt="" class="logo">
             <div class="animationSquare"></div>
         </div>
-        
-        <button class="projectsShowBtn">My Projects
-              <div class="wave"></div>
+        <div class="mobileButtonWrapper">
+
+          <div class="mobileContactContainer contactContainer">
+            <button class="contactShowBtn mobileContactButton">
+                  contact me
+                <div class="wave"></div>
+                <div class="secondWave"></div>
+            </button>
+            <img src="img/contactIcons/linkedIn.svg" alt="" class="linkedinImage">
+            <img src="img/contactIcons/gitHub.svg" alt="" class="githubImage">
+        </div>
+          
+          <button class="projectsShowBtn">
+              My Projects
+            <div class="wave"></div>
             <div class="secondWave"></div>
-        </button>
+
+         </button>
+      </div>
       </nav>
 
-      <div class="scrollWindowAnimation">
-        <div class="scrollPrevent"></div>
-      </div>
+     
 
       <div class="mainImageContainer">
         <div class="mainImage"></div>
@@ -54,15 +87,15 @@
 
     <section class="description">
      <div class="descriptionMarginWrapper">
-       <div class="helloText"></div>
-
+  
        <article class="firstDescription">
          
         <div class="paragraphWrapper">
                 <p class="paragraphText">
                     Jestem Mariusz, pasjonat programowania i tworzenia stron internetowych. Jako młody web developer, jestem 
                     gotowy na wyzwania i pełen zapału do nauki oraz doskonalenia moich umiejętności. Mam doświadczenie w 
-                    tworzeniu stron internetowych jako freelancer.
+                    tworzeniu stron internetowych jako freelancer. Interesuje się nowymi technologiami, sprzętem elektronicznym, motoryzacją
+                    oraz sportem. 
                 </p>
         </div>
 
@@ -71,11 +104,14 @@
        <div class="descriptionFlexContainer">
 
          <div class="descriptionPhotoContainer">
-             <img src="img/kal-visuals-PFC2fY9LE_g-unsplash.jpg" alt="">
+             <div class="blob"></div>
+            
          </div>
 
          <div class="skillsWrapper">
-         <div class="descriptionSkillsContainer">
+      
+            
+           <div class="descriptionSkillsContainer">
              
 
              <!-- Skills text -->
@@ -122,43 +158,52 @@
              <!-- Klawisze ze skillsami -->
              <div class="skill-grid-6 skillContainer">
                 <img src="img/skillSetIcons/css.svg" alt="">
+                <div class="buttonShadow"></div>
              </div>
              <div class="skill-grid-7 skillContainer">
                 <img src="img/skillSetIcons/html.svg" alt="">
+                <div class="buttonShadow"></div>
              </div>
              <div class="skill-grid-9 skillContainer">
                 <img src="img/skillSetIcons/javaScript.svg" alt="">
+                <div class="buttonShadow"></div>
              </div>
              <div class="skill-grid-10 skillContainer">
                  <img src="img/skillSetIcons/react.svg" alt="">
+                 <div class="buttonShadow"></div>
              </div>
              <div class="skill-grid-11 skillContainer">
                  <img src="img/skillSetIcons/mongoDb.svg" alt="">
+                 <div class="buttonShadow"></div>
              </div>
              <div class="skill-grid-13 skillContainer">
                  <img src="img/skillSetIcons/tailwind.svg" alt="">
+                 <div class="buttonShadow"></div>
              </div>
              <div class="skill-grid-14 skillContainer">
                  <img src="img/skillSetIcons/sass.png" alt="">
+                 <div class="buttonShadow"></div>
              </div>
              <div class="skill-grid-15 skillContainer">
                   <img src="img/skillSetIcons/git.svg" alt="">
+                  <div class="buttonShadow"></div>
              </div>
+           </div>
 
-            
-             
-         </div>
-           
+           <div class="fade"></div>
         </div>
+
        </div>
 
 
        <article class="secondDescription">
-        <p class="paragraphText">
-          Moje główne obszary zainteresowań to HTML, CSS, JavaScript, TypeScript, React, ale jestem również otwarty
-          na naukę nowych narzędzi i technologii, które pomogą mi poszerzyć moje umiejętności i stworzyć jeszcze 
-          lepsze produkty.
-        </p>
+        <div class="paragraphWrapper">
+          <p class="paragraphText">
+           W programowaniu moimi głównymi obszarami zainteresowań są HTML, CSS, JavaScript, TypeScript, React, ale jestem również otwarty
+           na naukę nowych narzędzi i technologii, które pomogą mi poszerzyć moje umiejętności i stworzyć jeszcze 
+           lepsze produkty.
+          </p>
+        </div>
        </article>
 
     </section>
@@ -191,17 +236,18 @@
         </div>
        
         <div class="projectsContainer">
+  
 
              <div class="scrollWrapper">
                 <div class="scrollTrigger"></div>
              </div>
 
+             <div class="scrollIndicator"> </div> 
+
             <div class="projectDetails">
-
                 <div class="detailsFlexWrapper">
-
-                 <div class="detailsWrapper">
-                    
+                  <div class="detailsWrapper">
+                  
                     <div class="websiteDescription">
                         Strona stworzona na zlecenie concent creatora "m3dialnego". Została napisana
                         głównie z wykorzystaniem html, css oraz JavaScript. Założeniem tej strony było 
@@ -215,24 +261,51 @@
                       <img src="img/skillSetIcons/javaScript.svg" alt="">
                     </div>
                     <div class="buttonsDetailsContainer">
-                      <button class="showWebsite">Show website</button>
-                      <button class="showCode">Show Code</button>
+                      <button class="showWebsite" link="https://m3dialny.netlify.app/" >Show website</button>
+                      <button class="showCode" link="https://github.com/MariuszKusio/M3dialny-website" >Show Code</button>
                     </div>
 
-                </div>
-                <div class="scrollIndicator">
-                        
-                </div>
+                </div> 
+                   
+              </div>      
             </div>
 
+            <div class="projectDetailsMobile">
+              <div class="detailsFlexWrapperMobile">
+                <div class="detailsWrapperMobile">
+                   
+                  <div class="websiteDescriptionMobile websiteDescription">
+                    Strona stworzona na zlecenie concent creatora "m3dialnego". Została napisana
+                    głównie z wykorzystaniem html, css oraz JavaScript. Założeniem tej strony było 
+                    zaprezentowanie możliwości wizualnych w tworzeniu materiałów reklamowych przez klienta. 
+                    Zależało nam na stworzeniu przejrzystej galerii dla odwiedzających stronę.
+                  </div>
+
+                  <div class="iconsWrapperMobile">
+                    <img src="img/skillSetIcons/html.svg" alt="">
+                    <img src="img/skillSetIcons/css.svg" alt="">
+                    <img src="img/skillSetIcons/javaScript.svg" alt="">
+                  </div>
+                  <div class="buttonsDetailsContainer">
+                    <button class="showWebsite" link="https://m3dialny.netlify.app/" >Show website</button>
+                    <button class="showCode" link="https://github.com/MariuszKusio/M3dialny-website" >Show Code</button>
+                  </div>
+
+                </div>
+              </div>
             </div>
+
+
             <div class="showDetails">
                 <i class="fa-solid fa-chevron-left"></i>
             </div>
 
+            
+            
+            <div class="verticalBarMobile"></div>
             <div class="verticalBar"></div>
             <div class="projectView">
-                <img id="projectImage" src="img/pagesView/m3dialnyProject.png" alt="">
+                <img id="projectImage" src="" alt="">
             </div>
 
            
@@ -242,11 +315,9 @@
 
 
 
-
     <script type="module" src="main.js"></script>
     <script src="dist/smooth-scrollbar.js"></script>
     <script src="dist/gsap.min.js"></script>
-    <script src="dist/ScrollTrigger.min.js"></script>
-    <script src="dist/lenis.min.js"></script>
+  
 </body>
 </html>
